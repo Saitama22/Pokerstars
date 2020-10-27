@@ -100,6 +100,7 @@ namespace poker.exe._2._0
                 this.mybank.Size = new System.Drawing.Size(300, 30);
                 this.mybank.Font = new System.Drawing.Font("Segoe UI", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
                 this.mybank.Text = "Мой банк: ";
+                this.mybank.Click += new System.EventHandler(this.mybank_Click);
             }
             // But_start
             {

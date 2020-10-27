@@ -25,6 +25,14 @@ namespace poker.exe._2._0
             InitializeComponent();
             game.getflop(50);
         }
+        private void mybank_Click(object sender, EventArgs e)
+        {
+            if (player[0].sum==0)
+            {
+                saper sap = new saper();
+                sap.Show();
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -39,7 +47,7 @@ namespace poker.exe._2._0
                 for (int i = 0; i < player.Length; i++)
                 {
                     PlBank[i] = rnd.Next(1, 10) * 10000;
-                    //PlBank[i] = 100000;
+                   // PlBank[i] = 100000;
                     player[i] = new Player(PlBank[i]);
                 }
                 visible();
@@ -232,10 +240,13 @@ namespace poker.exe._2._0
                 my1.Image = Image.FromFile(patch + "los" + endpat);
                 my2.Image = Image.FromFile(patch + "los" + endpat);
                 player[0].giveCards();
-                for (int i = 0; i < 4; i++)
+                while (motion !=3)
                 {
                     newMotion();
                 }
+                newMotion();
+                newMotion();
+                finalMotion();
             }
             else
                 errorProvider1.SetError(but_lose, "На первом ходу нельзя сдать карты");
@@ -259,6 +270,7 @@ namespace poker.exe._2._0
                     en[i * 2 - 2].Image = Image.FromFile(patch + "los" + endpat);
                 }
             }
+            actualRate.Text = "Текущая ставка: "+ game.acttualRate.ToString();
             game.rate = 0;
             for (int i = 0; i < player.Length; i++)
                 game.rate += player[i].getCont();
